@@ -12,7 +12,7 @@ import Layout from './components/Layout'
 const routes = [
   {
     path: ROUTES.home,
-    element: <div>Hello world!</div>,
+    element: <div>Click on one of the example links.</div>,
   },
   { path: ROUTES.minimal, element: <Minimal /> },
   { path: ROUTES.basicExample, element: <BasicExample /> },
