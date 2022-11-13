@@ -5,35 +5,26 @@ import './index.css'
 import reportWebVitals from './reportWebVitals'
 import { ROUTES } from './constants'
 import Minimal from './routes/Minimal'
-import Layout from './components/Layout'
 import BasicExample from './routes/BasicExample'
+import WithFormik from './routes/WithFormik'
+import Layout from './components/Layout'
 
-const router = createBrowserRouter([
+const routes = [
   {
     path: ROUTES.home,
-    element: (
-      <Layout>
-        <div>Hello world!</div>,
-      </Layout>
-    ),
+    element: <div>Hello world!</div>,
   },
-  {
-    path: ROUTES.minimal,
-    element: (
-      <Layout>
-        <Minimal />
-      </Layout>
-    ),
-  },
-  {
-    path: ROUTES.basicExample,
-    element: (
-      <Layout>
-        <BasicExample />
-      </Layout>
-    ),
-  },
-])
+  { path: ROUTES.minimal, element: <Minimal /> },
+  { path: ROUTES.basicExample, element: <BasicExample /> },
+  { path: ROUTES.withFormik, element: <WithFormik /> },
+]
+
+const router = createBrowserRouter(
+  routes.map((route) => ({
+    path: route.path,
+    element: <Layout>{route.element}</Layout>,
+  }))
+)
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
