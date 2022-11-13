@@ -35,17 +35,12 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
     return null
   }
 
-  const buttonClasses = 'border px-2 py-1 border-black mr-3'
-
   return (
     <nav className="bg-gray-200 p-2 mb-4">
       <ToolbarButton
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
-        className={classNames(
-          buttonClasses,
-          editor.isActive('bold') ? 'is-active' : ''
-        )}
+        isActive={editor.isActive('bold')}
       >
         bold
       </ToolbarButton>
@@ -53,10 +48,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       <ToolbarButton
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
-        className={classNames(
-          buttonClasses,
-          editor.isActive('italic') ? 'is-active' : ''
-        )}
+        isActive={editor.isActive('italic')}
       >
         italic
       </ToolbarButton>
@@ -64,10 +56,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
       <ToolbarButton
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
-        className={classNames(
-          buttonClasses,
-          editor.isActive('strike') ? 'is-active' : ''
-        )}
+        isActive={editor.isActive('strike')}
       >
         strike
       </ToolbarButton>
