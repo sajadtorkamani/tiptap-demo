@@ -3,6 +3,7 @@ import { Editor, EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import classNames from 'classnames'
 import Dump from '../components/Dump'
+import ToolbarButton from '../components/ToolbarButton'
 
 const BasicExample: React.FC = () => {
   const editor = useEditor({
@@ -38,7 +39,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
 
   return (
     <nav className="bg-gray-200 p-2 mb-4">
-      <button
+      <ToolbarButton
         onClick={() => editor.chain().focus().toggleBold().run()}
         disabled={!editor.can().chain().focus().toggleBold().run()}
         className={classNames(
@@ -47,9 +48,9 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
         )}
       >
         bold
-      </button>
+      </ToolbarButton>
 
-      <button
+      <ToolbarButton
         onClick={() => editor.chain().focus().toggleItalic().run()}
         disabled={!editor.can().chain().focus().toggleItalic().run()}
         className={classNames(
@@ -58,9 +59,9 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
         )}
       >
         italic
-      </button>
+      </ToolbarButton>
 
-      <button
+      <ToolbarButton
         onClick={() => editor.chain().focus().toggleStrike().run()}
         disabled={!editor.can().chain().focus().toggleStrike().run()}
         className={classNames(
@@ -69,7 +70,7 @@ const MenuBar = ({ editor }: { editor: Editor | null }) => {
         )}
       >
         strike
-      </button>
+      </ToolbarButton>
     </nav>
   )
 }
