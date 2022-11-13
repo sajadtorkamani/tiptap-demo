@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals'
 import { ROUTES } from './constants'
 import Minimal from './routes/Minimal'
 import Layout from './components/Layout'
-import WithBasicFormatting from './routes/WithBasicFormatting'
 import BasicExample from './routes/BasicExample'
 
 const router = createBrowserRouter([
@@ -23,14 +22,6 @@ const router = createBrowserRouter([
     element: (
       <Layout>
         <Minimal />
-      </Layout>
-    ),
-  },
-  {
-    path: ROUTES.withBasicFormatting,
-    element: (
-      <Layout>
-        <WithBasicFormatting />
       </Layout>
     ),
   },
