@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 import Dump from '../components/Dump'
@@ -11,6 +11,8 @@ interface EditorInput {
 }
 
 const WithFormik: React.FC = () => {
+  const formikRef = useRef<FormikProps<EditorInput>>(null)
+
   const initialValues: EditorInput = {
     text: '',
     html: '',
@@ -19,6 +21,12 @@ const WithFormik: React.FC = () => {
   const editor = useEditor({
     extensions: [StarterKit],
     content: initialValues.html,
+    onUpdate: ({ editor }) => {
+      formikRef.current?.setValues({
+        text: editor.getText(),
+        html: editor.getHTML(),
+      })
+    },
   })
 
   function handleSubmit(values: EditorInput) {
@@ -26,7 +34,11 @@ const WithFormik: React.FC = () => {
   }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      innerRef={formikRef}
+    >
       {({ values }: FormikProps<EditorInput>) => (
         <Form>
           <Toolbar editor={editor} />
