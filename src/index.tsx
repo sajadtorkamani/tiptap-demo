@@ -10,11 +10,19 @@ import Layout from './components/Layout'
 const router = createBrowserRouter([
   {
     path: ROUTES.home,
-    element: <div>Hello world!</div>,
+    element: (
+      <Layout>
+        <div>Hello world!</div>,
+      </Layout>
+    ),
   },
   {
     path: ROUTES.minimal,
-    element: <Minimal />,
+    element: (
+      <Layout>
+        <Minimal />
+      </Layout>
+    ),
   },
 ])
 
@@ -22,9 +30,7 @@ const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
   <React.StrictMode>
-    <Layout>
-      <RouterProvider router={router} />
-    </Layout>
+    <RouterProvider router={router} />
   </React.StrictMode>
 )
 
